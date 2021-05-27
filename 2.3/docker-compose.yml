@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    hello-frontend:
+      container_name: hello-frontend
+      build: ./front
+      ports:
+        - 5000:5000
+    hello-backend:
+      container_name: hello-backend
+      build: ./back
+      ports:
+        - 8080:8080
+ 
