@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+    hello-backend:
+        container_name: hello-backend
+        build: ./back
+        environment:
+            REDIS_HOST: redis
+        depends_on:
+            - redis
+        ports:
+            - 8080:8080
+    hello-frontend:
+        container_name: hello-frontend
+        build: ./front
+        depends_on:
+            - hello-backend
+        ports:
+            - 5000:5000
+    redis:
+        container_name: redis-cache
+        image: redis
+        restart: unless-stopped 
